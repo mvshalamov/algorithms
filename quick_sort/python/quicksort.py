@@ -19,7 +19,6 @@ def partition(data, pivot_index, first_index, last_index):
     left_index = first_index
     right_index = last_index
 
-    print pivot_value
 
     while True:
         while left_index <= right_index and data[left_index] < pivot_value:
@@ -33,10 +32,17 @@ def partition(data, pivot_index, first_index, last_index):
 
         data[left_index], data[right_index] = data[right_index], data[left_index]
 
-    return data
+    return right_index
 
+def quick(data, begin, end):
+    if begin >= end:
+        return
+    print begin, '----', end
+    pivot = partition(data, begin, begin, end)
+    quick(data, begin, pivot - 1)
+    quick(data, pivot + 1, end)
 
 if __name__ == '__main__':
     data = [1, 5, 3, 7, 2, 9, 6]
-    print quicksort(data)
-    print partition(data, 1, 0, len(data) - 1)
+    print quick(data, 0, len(data) - 1)
+    print data
