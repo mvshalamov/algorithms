@@ -1,19 +1,3 @@
-def quicksort(data):
-    if len(data) <= 1:
-        return data
-
-    op_elem = data[0]
-    less, pivot, more = [], [], []
-    for el in data:
-        if el > op_elem:
-            more.append(el)
-        elif el < op_elem:
-            less.append(el)
-        else:
-            pivot.append(el)
-    data = quicksort(less) + pivot + quicksort(more)
-    return data
-
 def partition(data, pivot_index, first_index, last_index):
     pivot_value = data[pivot_index]
     left_index = first_index
@@ -34,13 +18,13 @@ def partition(data, pivot_index, first_index, last_index):
 
     return right_index
 
-def quick(data, begin, end):
+def quicksort(data, begin, end):
     if begin >= end:
         return
     print begin, '----', end
     pivot = partition(data, begin, begin, end)
-    quick(data, begin, pivot - 1)
-    quick(data, pivot + 1, end)
+    quicksort(data, begin, pivot - 1)
+    quicksort(data, pivot + 1, end)
 
 if __name__ == '__main__':
     data = [1, 5, 3, 7, 2, 9, 6]
