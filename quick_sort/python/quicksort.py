@@ -21,7 +21,7 @@ def partition(data, pivot_index, first_index, last_index):
 def quicksort(data, begin, end):
     if begin >= end:
         return
-    print begin, '----', end
+
     pivot = partition(data, begin, begin, end)
     quicksort(data, begin, pivot - 1)
     quicksort(data, pivot + 1, end)

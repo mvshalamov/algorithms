@@ -1,7 +1,13 @@
 import unittest
-from quicksort import quicksort
+from quicksort import quicksort, partition
 
 class TestStringMethods(unittest.TestCase):
-    def test_success_sort(self):
-        self.assertEqual([1,2,4], quicksort([4, 2, 1], 0, 2))
-        self.assertEqual([1,2,4,7, 9, 150, 160], quicksort([150, 4, 2, 7, 1, 9, 160], 0, 6))
+    def test__sort(self):
+        data = [1, 3, 2, 8]
+        quicksort(data, 0, len(data) - 1)
+        self.assertEqual([1,2,3, 8], data)
+        
+        data1 = [150, 4, 2, 7, 1, 9, 160]
+        quicksort(data1, 0, 6)
+        self.assertEqual([1, 2, 4, 7, 9, 150, 160], data1)
+
